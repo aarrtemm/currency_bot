@@ -1,2 +1,8 @@
-BOT_TOKEN = "7155148804:AAGKSWRByEv3ON2LHOOD9PSm6bCInpByXF4"
-SQLALCHEMY_URL = "sqlite+aiosqlite:///db.sqlite3"
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+SQLALCHEMY_URL = os.getenv("SQLALCHEMY_URL")
