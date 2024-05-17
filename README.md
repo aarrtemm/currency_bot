@@ -14,9 +14,13 @@
 
 ## 3. Create a new bot using BotFather.
   - Copy the token provided by BotFather.
-  - Add the following line to the ```config.py``` file, replacing YOUR_BOT_TOKEN with your bot token:
+  - Add the database url to ```.env``` file.
+  - Add the following line to the ```.env``` file, replacing YOUR_BOT_TOKEN and YOUR_URL with your bot token:
     ```bash
-    BOT_TOKEN=YOUR_BOT_TOKEN
+    TELEGRAM_BOT_TOKEN=YOUR_BOT_TOKEN
+
+    SQLALCHEMY_URL=YOUR_URL
+    
     ```
 ## 4. Set up your database:
   - Update the database configurations in config.py according to your database setup.
