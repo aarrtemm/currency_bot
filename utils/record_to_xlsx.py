@@ -8,6 +8,6 @@ def record_to_excel(exchange_rates):
     ws.append(["id", "datetime", "exchange_rate"])
 
     for rate in exchange_rates:
-        ws.append([rate.id, rate.date, rate.rate])
+        ws.append([rate.id, rate.datetime, rate.exchange_rate])
 
     wb.save(f"result.xlsx")
