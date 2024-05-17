@@ -27,7 +27,7 @@ async def parse_rate():
     while True:
         data = parse.get_exchange_rate()
         await req.create_new_rate(data, datetime.datetime.now())
-        await asyncio.sleep(30)
+        await asyncio.sleep(3600)
 
 
 async def main():
