@@ -1,16 +1,24 @@
 import datetime
+import logging
+
 from sqlalchemy import select
-from models import ExchangeRate, async_session
+from database.models import ExchangeRate
+
+from database.settings import async_session
 
 
-async def create_new_rate(exchange_rate: float, date: datetime.date) -> None:
+async def create_new_rate(
+        exchange_rate: float,
+        date: datetime.date,
+) -> None:
+    logging.info(f"New exchange rate: {exchange_rate}")
     async with async_session() as session:
-        new_rate = ExchangeRate(rate=exchange_rate, date=date)
+        new_rate = ExchangeRate(datetime=date, exchange_rate=exchange_rate)
         session.add(new_rate)
         await session.commit()
 
 
 async def get_rates():
     async with async_session() as session:
-        rates = await session.scalars(select(ExchangeRate))
-        return rates
+        result = await session.execute(select(ExchangeRate))
+        return result.scalars().all()
